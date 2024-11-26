@@ -1,0 +1,10 @@
+import pandas as pd
+df=pd.read_csv("R:\\ML\\golf.csv")
+df.head()
+from chefboost import Chefboost  
+config = {"algorithm": "ID3"}  
+model = Chefboost.fit(df, config)
+for index, instance in df.iterrows():
+    prediction = Chefboost.predict(model, instance[:-1].tolist())  
+    actual = instance[-1] 
+    print(f"Prediction: {prediction}, Actual: {actual}")
